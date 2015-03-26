@@ -39,6 +39,7 @@ module.exports = function proxyMiddleware(options) {
     }
     opts.method = req.method;
     opts.headers = options.headers ? merge(req.headers, options.headers) : req.headers;
+    rewriteCookieHosts(opts.headers, opts, opts.headers, req);
 
     applyViaHeader(req.headers, opts, opts.headers);
 
